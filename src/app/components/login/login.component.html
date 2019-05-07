@@ -1,0 +1,21 @@
+<mat-card id="loginCard">
+    <div id="mainContainer">
+        <form id="loginContainer" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+            <h3 mat-dialog-title>Login</h3>
+            <mat-form-field appearance="outline">
+                <mat-label>User Name</mat-label>
+                <!-- Take the user name input here! -->
+                <input matInput ngModel name="username" placeholder="Enter user name..." required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <!-- Take the password input here -->
+                <input matInput ngModel name="password" placeholder="Enter password..." [type]="show ? 'text' : 'password'" required>
+                <mat-icon id="hSIcon" matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+            </mat-form-field>
+            <button type="submit" id="loginBttn" [disabled]="loginForm.invalid" mat-raised-button>Login</button>
+            <br>
+        </form>
+    </div>
+</mat-card>

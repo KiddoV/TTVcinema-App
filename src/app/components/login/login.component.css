@@ -1,0 +1,26 @@
+#mainContainer {
+    height: 100%;
+}
+
+#hSIcon{
+    cursor: pointer;
+}
+
+#loginContainer {
+    margin: 50px auto;
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+#loginBttn {
+    background-color: #ff8989;
+    color: white;
+    width: 40%;
+    margin: auto auto;
+}
+
+#loginCard {
+    margin: 50px auto;
+    width: 400px;
+}

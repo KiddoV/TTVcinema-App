@@ -1,0 +1,18 @@
+#signupContainer {
+    margin: 50px auto;
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+
+#signupBttn {
+    background-color: #77abff;
+    color: white;
+    width: 40%;
+    margin: auto auto;
+}
+
+#signupCard {
+    width: 400px;
+    margin: 20px auto;
+}
