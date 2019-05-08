@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div>
   <h1>Search for movie in API</h1>
   <input [(ngModel)]="movieTitle"> <br>
@@ -9,3 +10,33 @@
     </tr>
   </table>
 </div>
+=======
+<mat-card id="searchMovieCard">
+  <div class="input-group md-form form-sm form-2 pl-0">
+    <input [(ngModel)]="movieNameInput"  class="form-control my-0 py-1 red-border" type="text" placeholder="Search for a movie..." aria-label="Search">
+    <div class="input-group-append">
+      <span class="input-group-text red lighten-3" id="basic-text1">
+      </span>
+      <input type="button" class="btn btn-primary" value="Search" (click)="getMovies()">
+    </div>
+  </div>
+  </mat-card>
+
+<mat-card id="resultMovieCard">
+
+    <div id="row">
+      <div id="col" *ngFor="let movie of searchResult; let i = index">
+        <mat-card id="movieCard">
+          
+            <h3 mat-dialog-title id="cardHeader">{{movie.original_title}}</h3>
+          <img mat-card-image id="moviePoster" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" height="380px"/>
+          <mat-card-footer>
+            <p id="dateRelease">{{movie.release_date | date: 'mediumDate': 'yyyy'}}</p>
+            <a id="moreDetailBttn" mat-button routerLink="/movie/{{movie.id}}">More Detail</a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+
+</mat-card>
+>>>>>>> 3cf430c9e8d3e2d581b0fbfd1902a2ef0a60047b

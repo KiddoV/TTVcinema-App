@@ -20,6 +20,12 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 
+<<<<<<< HEAD
+=======
+//Services @Viet
+import { SearchMovieService } from './services/search-movie.service';
+import { MovieComponent } from './components/movie/movie.component'
+>>>>>>> 3cf430c9e8d3e2d581b0fbfd1902a2ef0a60047b
 
 @NgModule({
   declarations: [
@@ -29,7 +35,12 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
     TopnavbarComponent,
     MovieSlideshowComponent,
     SignupComponent,
+<<<<<<< HEAD
     SearchMovieComponent
+=======
+    SearchMovieComponent,
+    MovieComponent
+>>>>>>> 3cf430c9e8d3e2d581b0fbfd1902a2ef0a60047b
   ],
   imports: [
     BrowserModule,
@@ -40,7 +51,9 @@ import { SearchMovieComponent } from './components/search-movie/search-movie.com
     FormsModule //This is for controlling form to make it work in Angular 
     //FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    SearchMovieService //add the service here! @Viet
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
