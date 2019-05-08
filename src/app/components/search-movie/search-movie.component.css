@@ -1,0 +1,53 @@
+#searchMovieCard {
+    width: 95%;
+    margin: 10px auto;
+}
+
+#resultMovieCard {
+    width: 95%;
+    margin: 10px auto;
+}
+
+#row {
+    margin: 0 -5px;
+}
+#row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#col {
+    float: left;
+    width: 33.333%;
+    padding: 0 10px 10px ;
+}
+/* Column change when resize! */
+@media screen and (max-width: 600px) { 
+    #col {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+}
+
+#cardHeader {
+    height: 50px;
+    font-size: 15px;
+}
+
+#movieCard {
+    text-align: center;
+}
+
+#dateRelease {
+    height: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#moreDetailBttn {
+    width: 100%;
+}
