@@ -20,6 +20,7 @@ export class SearchMovieService {
       + '&page=1&include_adult=false');
   }
 
+  //Get individual movie by its ID
   getMovieById(id: number) {
     return this.http.get(this.mainUrl + 'movie/' + id + '?api_key=' + this.apiKey);
   }

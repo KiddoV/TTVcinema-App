@@ -1,3 +1,7 @@
-<p>
-  movie works!
-</p>
+<mat-card id="movieDetailContainer">
+    <h1 id="movieTitle">{{movie.original_title}}</h1>
+    <img id="moviePoster01" src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" height="100%" width="100%" />
+
+    <img id="moviePoster02" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"/>
+    
+</mat-card>

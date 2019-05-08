@@ -16,7 +16,7 @@
         <mat-card id="movieCard">
           
             <h3 mat-dialog-title id="cardHeader">{{movie.original_title}}</h3>
-          <img mat-card-image id="moviePoster" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" height="380px"/>
+          <img mat-card-image id="moviePoster" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" height="400px;"/>
           <mat-card-footer>
             <p id="dateRelease">{{movie.release_date | date: 'mediumDate': 'yyyy'}}</p>
             <a id="moreDetailBttn" mat-button routerLink="/movie/{{movie.id}}">More Detail</a>

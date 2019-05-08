@@ -1,0 +1,16 @@
+#movieDetailContainer {
+    margin: 5px auto;
+    width: 96%;
+}
+
+#moviePoster01 {
+    /* Make img blur @Viet */
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+#moviePoster02 {
+    position: absolute;
+    width: 35%;
+    height: 75%;
+}
