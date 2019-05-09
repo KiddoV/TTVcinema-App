@@ -1,3 +1,6 @@
-<p>
-  movie works!
-</p>
+<h1>{{movie["title"]}}</h1>
+<img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" width="400px" height="400px">
+<p>Description:</p>
+<p>{{movie["overview"]}}</p>
+<button class="btn btn-success">Add Movie</button>
+<a routerLink="/search-movie"> <button class="btn btn-primary">Back</button></a>
