@@ -20,9 +20,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 
-//Services @Viet
 import { SearchMovieService } from './services/search-movie.service';
-import { MovieComponent } from './components/movie/movie.component'
+import { MovieComponent } from './components/movie/movie.component';
+import { UserhomeComponent } from './components/user/userhome/userhome.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { MovieComponent } from './components/movie/movie.component'
     MovieSlideshowComponent,
     SignupComponent,
     SearchMovieComponent,
-    MovieComponent
+    MovieComponent,
+    UserhomeComponent
   ],
   imports: [
     BrowserModule,

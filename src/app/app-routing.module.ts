@@ -6,8 +6,10 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { UserhomeComponent } from './components/user/userhome/userhome.component';
 
 const routes: Routes = [
+  {path: 'user-home', component: UserhomeComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},

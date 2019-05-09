@@ -11,6 +11,25 @@
 
 #moviePoster02 {
     position: absolute;
-    width: 35%;
+    width: 34%;
     height: 75%;
+    left: 10px;
+    top: 95px;
+    -webkit-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.75);
+}
+
+#infoContainer {
+    color: white;
+    text-shadow:5px 5px 10px black;
+    width: 45%;
+    position: absolute;
+    right: 20px;
+    top: 95px;
+}
+
+td {
+    vertical-align: top;
+    padding: 6px;
 }

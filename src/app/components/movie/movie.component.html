@@ -1,7 +1,31 @@
 <mat-card id="movieDetailContainer">
     <h1 id="movieTitle">{{movie.original_title}}</h1>
     <img id="moviePoster01" src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" height="100%" width="100%" />
+    <img id="moviePoster02" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
 
-    <img id="moviePoster02" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"/>
-    
+    <div id="infoContainer">
+        <table>
+            <tr>
+                <td style="width: 150px;">Released Date:</td>
+                <td>{{movie.release_date | date: 'MM-dd-yyyy'}}</td>
+            </tr>
+            <tr>
+                <td>Budget:</td>
+                <td>{{movie.budget | currency}}</td>
+            </tr>
+            <tr>
+                <td>Runtime:</td>
+                <td>{{movie.runtime}} mins</td>
+            </tr>
+            <tr>
+                <td>Genre:</td>
+                <td><span *ngFor="let genre of movie.genres" class="badge badge-warning mr-2">{{genre.name}}</span></td>
+            </tr>
+            <tr>
+                <td>Overview:</td>
+                <td><div style="height: 170px; overflow-y: scroll;">{{movie.overview}}</div></td>
+            </tr>
+
+        </table>
+    </div>
 </mat-card>

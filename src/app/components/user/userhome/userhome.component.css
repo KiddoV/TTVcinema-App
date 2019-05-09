@@ -1,0 +1,21 @@
+#userhomeContainer {
+    width: 95%;
+    margin: 10px auto;
+}
+
+#userImg {
+    -webkit-box-shadow: 10px 10px 16px 0px rgba(0, 0, 0, 0.222);
+    -moz-box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.222);
+    box-shadow: 10px 10px 16px 0px rgba(0,0,0,0.222);
+}
+
+#userleftNav{
+    text-align: center;
+    left: 5px;
+    width: 20%;
+}
+
+a {
+    text-decoration: none;
+    width: 100%;
+}
