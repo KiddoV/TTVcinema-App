@@ -7,9 +7,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { UserhomeComponent } from './components/user/userhome/userhome.component';
+import { LoginService } from './services/login.service';
 
 const routes: Routes = [
-  {path: 'user-home', component: UserhomeComponent},
+  {path: 'user-home', component: UserhomeComponent, canActivate: [LoginService]},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},

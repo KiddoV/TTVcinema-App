@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-topnavbar',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopnavbarComponent implements OnInit {
 
-  constructor() { }
+  username: string = sessionStorage.getItem("username");
+
+  constructor(private loginservice: LoginService) { }
 
   ngOnInit() {
   }
-
+  
 }

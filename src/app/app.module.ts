@@ -19,10 +19,13 @@ import { MovieSlideshowComponent } from './components/movie-slideshow/movie-slid
 import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
-
-import { SearchMovieService } from './services/search-movie.service';
 import { MovieComponent } from './components/movie/movie.component';
 import { UserhomeComponent } from './components/user/userhome/userhome.component'
+
+//Services
+import { SearchMovieService } from './services/search-movie.service';
+import { LoginService } from './services/login.service';
+import { FooterbarComponent } from './components/footerbar/footerbar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { UserhomeComponent } from './components/user/userhome/userhome.component
     SignupComponent,
     SearchMovieComponent,
     MovieComponent,
-    UserhomeComponent
+    UserhomeComponent,
+    FooterbarComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,8 @@ import { UserhomeComponent } from './components/user/userhome/userhome.component
     //FlexLayoutModule
   ],
   providers: [
-    SearchMovieService //add the service here! @Viet
+    SearchMovieService,
+    LoginService //add the service here! @Viet
   ],
   bootstrap: [AppComponent]
 })
