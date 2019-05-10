@@ -10,19 +10,14 @@
             routerLinkActive="active">Login</button>
         <button *ngIf="!loginservice.isUserLogin()" class="btn btn-outline-secondary" type="button" routerLink="signup"
             routerLinkActive="active">Sign Up</button>
-        <div class="btn-group">
-            <button type="button" class="btn btn-info">{{username}}</button>
-            <button id="dropdownBttn" type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
+        <div *ngIf="loginservice.isUserLogin()" class="btn-group">
+            <a mat-button style="color: white;" [matMenuTriggerFor]="appMenu" ><mat-icon style="color: white;">face</mat-icon> {{username}}</a>
+            <mat-menu #appMenu="matMenu">
+                <a mat-menu-item routerLink="user-home" routerLinkActive="active">Your Info</a>
+                <mat-divider></mat-divider>
+                <a mat-menu-item>Logout</a>
+            </mat-menu>
         </div>
+
     </div>
 </nav>
