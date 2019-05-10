@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       console.log('Value return: ' + returnVal['success']);
 
       if (returnVal['success'] == true) {
-        console.log('Its f**king true!');
+        sessionStorage.setItem('username', loginForm.value.username);
         this.router.navigate(['/user-home']);
       } else {
         this.alertMsgService.error('Wrong username or password!');
