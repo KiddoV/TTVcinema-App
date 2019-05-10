@@ -5,7 +5,7 @@
             onmouseout="this.src='../assets/imgs/ttvcine_logo.png'">
     </a>
     <div class="form-inline">
-        <button class="btn btn-outline-primary" type="button" routerLink="search-movie">Search</button>
+        <button mat-button style="color: white; margin-right: 10px;" routerLink="search-movie" routerLinkActive="active"><mat-icon style="color: white;">search</mat-icon> Search</button>
         <button *ngIf="!loginservice.isUserLogin()" class="btn btn-outline-primary" type="button" routerLink="login"
             routerLinkActive="active">Login</button>
         <button *ngIf="!loginservice.isUserLogin()" class="btn btn-outline-secondary" type="button" routerLink="signup"
@@ -13,9 +13,9 @@
         <div *ngIf="loginservice.isUserLogin()" class="btn-group">
             <a mat-button style="color: white;" [matMenuTriggerFor]="appMenu" ><mat-icon style="color: white;">face</mat-icon> {{username}}</a>
             <mat-menu #appMenu="matMenu">
-                <a mat-menu-item routerLink="user-home" routerLinkActive="active">Your Info</a>
+                <a mat-menu-item routerLink="user-home" routerLinkActive="active"><mat-icon>info</mat-icon>Your Info</a>
                 <mat-divider></mat-divider>
-                <a mat-menu-item>Logout</a>
+                <a mat-menu-item><mat-icon>logout</mat-icon>Logout</a>
             </mat-menu>
         </div>
 

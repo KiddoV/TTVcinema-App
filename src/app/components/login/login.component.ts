@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import {LoginService} from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { AlertMessageService } from 'src/app/services/alert-message.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(public loginservice: LoginService, private router: Router) { }
+  constructor(public loginservice: LoginService, 
+              private router: Router,
+              private alertMsgService: AlertMessageService) { }
 
   ngOnInit() {
   }
@@ -28,6 +31,7 @@ export class LoginComponent implements OnInit {
     if (this.loginservice.checkLogin(loginForm.value.username, loginForm.value.password)) {
       this.router.navigate(['/user-home']);
     } else {
+      
       this.router.navigate(['/login']);
     }
   }

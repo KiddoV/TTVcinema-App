@@ -26,6 +26,9 @@ import { UserhomeComponent } from './components/user/userhome/userhome.component
 import { SearchMovieService } from './services/search-movie.service';
 import { LoginService } from './services/login.service';
 import { FooterbarComponent } from './components/footerbar/footerbar.component';
+import { AlertMessageComponent } from './components/utils/alert-message/alert-message.component';
+import { AlertMessageService } from './services/alert-message.service';
+import { SignupService } from './services/signup.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { FooterbarComponent } from './components/footerbar/footerbar.component';
     SearchMovieComponent,
     MovieComponent,
     UserhomeComponent,
-    FooterbarComponent
+    FooterbarComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { FooterbarComponent } from './components/footerbar/footerbar.component';
   ],
   providers: [
     SearchMovieService,
-    LoginService //add the service here! @Viet
+    LoginService,
+    SignupService,
+    AlertMessageService //add the service here! @Viet
   ],
   bootstrap: [AppComponent]
 })
