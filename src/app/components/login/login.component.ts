@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   show = false;
 
 
-
   constructor(public loginservice: LoginService, 
               private router: Router,
               private alertMsgService: AlertMessageService) { }
@@ -27,13 +26,19 @@ export class LoginComponent implements OnInit {
 
   onLogin(loginForm: NgForm){
     console.log(loginForm.value.username + " " + loginForm.value.password);
+    
+    this.loginservice.checkLogin({username: loginForm.value.username, password: loginForm.value.password}).subscribe(
+      returnVal => {
+      console.log('Value return: ' + returnVal['success']);
 
-    if (this.loginservice.checkLogin(loginForm.value.username, loginForm.value.password)) {
-      this.router.navigate(['/user-home']);
-    } else {
-      
-      this.router.navigate(['/login']);
-    }
+      if (returnVal['success'] == true) {
+        console.log('Its f**king true!');
+        this.router.navigate(['/user-home']);
+      } else {
+        this.alertMsgService.error('Wrong username or password!');
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 }

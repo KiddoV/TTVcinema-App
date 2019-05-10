@@ -2,29 +2,24 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs'; //This module to control if user login or not @Viet
+import { User, UserNameAndPass } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  private mainUri: string = "http://13.58.182.105:8085//cinema/account/login";
 
   constructor(private http: HttpClient, private router: Router) { }
 
   //This function to check username and password
-  checkLogin(username: string, password: string) {
-    if (username === "test" && password === "password") {
-      //Store username for 1 session
-      sessionStorage.setItem('username', username);
-      return true;
-    } else {
-      return false;
-    }
+  checkLogin(userNameAndPass: UserNameAndPass) {
+    return this.http.post(this.mainUri, userNameAndPass);
   }
 
   //Check if user still login 
   isUserLogin() {
     let user = sessionStorage.getItem('username');
-    console.log(user === null);
     return !(user === null);
   }
 

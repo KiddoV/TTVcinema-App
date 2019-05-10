@@ -1,6 +1,7 @@
 #userhomeContainer {
     width: 95%;
     margin: 10px auto;
+    display: table;
 }
 
 #userImg {
@@ -21,6 +22,7 @@ a {
 }
 
 #userContentDiv {
+    margin-right: 0;
     left: 0;
     width: 75%;
 }
