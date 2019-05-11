@@ -1,4 +1,8 @@
 <mat-card id="adminhomeCard">
+    <a mat-button (click)="logout()">Logout</a>
+</mat-card>
+
+<mat-card id="adminhomeCard">
   <div id="topDiv">
     <mat-card id="smallCard">
       <h5 id="label01">Total Users</h5>
@@ -13,12 +17,12 @@
     <mat-card id="smallCard">
       <h5 id="label01">????</h5>
       <mat-divider></mat-divider>
-      <h4 id="label02">0</h4>
+      <h4 id="label02">?</h4>
     </mat-card>
     <mat-card id="smallCard">
       <h5 id="label01">????</h5>
       <mat-divider></mat-divider>
-      <h4 id="label02">0</h4>
+      <h4 id="label02">?</h4>
     </mat-card>
   </div>
 </mat-card>
@@ -34,14 +38,14 @@
             <mat-expansion-panel-header>
               <mat-panel-title><h4>Show All Users</h4></mat-panel-title>
             </mat-expansion-panel-header>
-            <button mat-button style="margin-bottom: 10px; background-color: crimson; color: white;">Show me all users in Database</button>
+            <button mat-button style="margin-bottom: 10px; background-color: crimson; color: white; outline: none;" (click)="getAllUsers()">Show me all users in Database</button>
 
             <div class="dataTable mat-elevation-z8">
               <table mat-table [dataSource]="dataSource">
-
+                
                 <ng-container matColumnDef="userid">
                   <th mat-header-cell *matHeaderCellDef>User Id</th>
-                  <td mat-cell *matCellDef="let element"> {{element.userid}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="firstName">
@@ -64,6 +68,11 @@
                   <td mat-cell *matCellDef="let element"> {{element.username}} </td>
                 </ng-container>
 
+                <ng-container matColumnDef="role">
+                    <th mat-header-cell *matHeaderCellDef>Role</th>
+                    <td mat-cell *matCellDef="let element"> {{element.role.roleName}} </td>
+                  </ng-container>
+                
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
@@ -73,7 +82,7 @@
             <mat-expansion-panel-header>
               <mat-panel-title><h4>Get User By Id</h4></mat-panel-title>
             </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
+            <p>Content</p>
           </mat-expansion-panel>
         </mat-accordion>
 
@@ -81,10 +90,6 @@
       <mat-tab label="Movies">
         <!-- second tab -->
 
-      </mat-tab>
-      <mat-tab label="????">
-        <!-- third tab -->
-        ?????
       </mat-tab>
     </mat-tab-group>
   </div>

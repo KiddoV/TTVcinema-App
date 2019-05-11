@@ -5,15 +5,38 @@
             onmouseout="this.src='../assets/imgs/ttvcine_logo.png'">
     </a>
     <div class="form-inline">
-        <button mat-button style="color: white; margin-right: 10px;" routerLink="search-movie" routerLinkActive="active"><mat-icon style="color: white;">search</mat-icon> Search</button>
+            <div *ngIf="loginservice.isUserLogin() && loginservice.isAdmin()" style="color: white; margin-right: 500px; margin-top: 6px;">
+                    <h4>Admin</h4>
+            </div>
+        <button mat-button style="color: white; margin-right: 10px; outline: none;" routerLink="search-movie"
+            routerLinkActive="active">
+            <mat-icon style="color: white;">search</mat-icon> Search
+        </button>
         <button *ngIf="!loginservice.isUserLogin()" class="btn btn-outline-primary" type="button" routerLink="login"
             routerLinkActive="active">Login</button>
         <button *ngIf="!loginservice.isUserLogin()" class="btn btn-outline-secondary" type="button" routerLink="signup"
             routerLinkActive="active">Sign Up</button>
-        <div *ngIf="loginservice.isUserLogin()" class="btn-group">
-            <a mat-button style="color: white;" [matMenuTriggerFor]="appMenu" ><mat-icon style="color: white;">face</mat-icon> {{username}}</a>
+        <div *ngIf="loginservice.isUserLogin() && !loginservice.isAdmin()" class="btn-group">
+            <a mat-button style="color: white;" [matMenuTriggerFor]="appMenu">
+                <mat-icon style="color: white;">face</mat-icon> {{loginservice.getUsername()}}
+            </a>
             <mat-menu #appMenu="matMenu">
-                <a mat-menu-item routerLink="user-home" routerLinkActive="active"><mat-icon>info</mat-icon>Your Info</a>
+                <a mat-menu-item routerLink="user-home" routerLinkActive="active">
+                    <mat-icon>info</mat-icon>Your Info
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-menu-item><mat-icon>logout</mat-icon>Logout</a>
+            </mat-menu>
+        </div>
+
+        <div *ngIf="loginservice.isUserLogin() && loginservice.isAdmin()" class="btn-group">
+            <a mat-button style="color: white;" [matMenuTriggerFor]="appMenu">
+                <mat-icon style="color: white;">assignment_ind</mat-icon> {{loginservice.getUsername()}}
+            </a>
+            <mat-menu #appMenu="matMenu">
+                <a mat-menu-item routerLink="admin-home" routerLinkActive="active">
+                    <mat-icon>dashboard</mat-icon>Dashboard
+                </a>
                 <mat-divider></mat-divider>
                 <a mat-menu-item><mat-icon>logout</mat-icon>Logout</a>
             </mat-menu>

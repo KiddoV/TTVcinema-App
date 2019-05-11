@@ -1,6 +1,6 @@
 <mat-card id="signupCard">
   <div id="mainContainer">
-    <form id="signupContainer" (ngSubmit)="onSignup(signupForm)" #signupForm = "ngForm">
+    <form id="signupContainer" (ngSubmit)="onSignup(signupForm)" #signupForm="ngForm">
       <h3 mat-dialog-title>Register New Account</h3>
       <mat-form-field>
         <input ngModel name="firstname" matInput placeholder="Your First Name" required>
@@ -9,7 +9,8 @@
         <input ngModel name="lastname" matInput placeholder="Your Last Name" required>
       </mat-form-field>
       <mat-form-field>
-        <input  ngModel name="email" matInput placeholder="Your Email Adress" required>
+        <input ngModel name="email" matInput placeholder="Your Email Adress" required>
+        <mat-error>Please enter a valid input!</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>User Name</mat-label>
@@ -23,7 +24,7 @@
         <mat-label>Confirm Password</mat-label>
         <input ngModel name="confirmPassword" matInput placeholder="Confirm Your Password" required>
       </mat-form-field>
-      <button id="signupBttn" mat-raised-button>Submit</button>
+      <button [disabled]="signupForm.invalid" id="signupBttn" mat-raised-button style="outline: none;">Submit</button>
     </form>
   </div>
 </mat-card>

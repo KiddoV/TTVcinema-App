@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { TopnavbarComponent } from './components/topnavbar/topnavbar.component';
 import { MovieSlideshowComponent } from './components/movie-slideshow/movie-slideshow.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { UserhomeComponent } from './components/user/userhome/userhome.component'
@@ -55,6 +55,7 @@ import { AdminhomeComponent } from './components/admin/adminhome/adminhome.compo
     SliderModule,
     BrowserAnimationsModule,
     NgImageSliderModule,
+    ReactiveFormsModule
 
   ],
   providers: [

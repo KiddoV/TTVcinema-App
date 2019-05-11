@@ -12,6 +12,10 @@
     margin: auto auto;
 }
 
+#signupBttn:disabled {
+    background-color: #f2f2f2;
+}
+
 #signupCard {
     width: 400px;
     margin: 20px auto;

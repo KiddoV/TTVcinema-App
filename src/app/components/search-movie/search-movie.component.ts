@@ -17,7 +17,6 @@ export class SearchMovieComponent implements OnInit {
   movieNameInput: String;
   searchResult: any;  //This value to hold the search result @Viet
 
-  // constructor(private http: HttpClient) { }
   constructor(public searchMovieService: SearchMovieService) {}
 
   ngOnInit() {}
@@ -26,7 +25,7 @@ export class SearchMovieComponent implements OnInit {
     this.searchMovieService.searchMovie(this.movieNameInput).subscribe(data => {
       this.searchResult = data['results'];
 
-      console.log(this.searchResult);
+      //console.log(this.searchResult);
     });
   }
 

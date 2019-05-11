@@ -8,7 +8,7 @@ import { User, UserNameAndPass } from './user';
   providedIn: 'root'
 })
 export class LoginService {
-  private mainUri: string = "http://13.58.182.105:8085//cinema/account/login";
+  private mainUri: string = "http://13.58.182.105:8085/cinema/account/login";
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -23,9 +23,22 @@ export class LoginService {
     return !(user === null);
   }
 
-  //Remove user if they logout 
+  isAdmin() {
+    let admin = JSON.parse(sessionStorage.getItem('userInfo'))['role']['roleName'];
+    if (admin == 'manager') {
+      return true;
+    }
+    return false;
+  }
+
+  getUsername() {
+    var info = JSON.parse(sessionStorage.getItem('userInfo'));
+    return info['username'];
+  }
+
+  //Remove all user info if they logout 
   userLogOut() {
-    sessionStorage.removeItem('username');
+    sessionStorage.clear();
   }
 
   //Restrict user from directly using url to login

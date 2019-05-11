@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/services/user';
 import { SignupService } from 'src/app/services/signup.service';
+import { AlertMessageService } from 'src/app/services/alert-message.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,24 +13,30 @@ export class SignupComponent implements OnInit {
   private status: boolean;
   private user: User;
 
-  constructor(private signupService: SignupService) { }
+  //
+  //email = new FormControl('', [Validators.required, Validators.email]);
+
+  constructor(private signupService: SignupService, private alertMsg: AlertMessageService) { }
 
   ngOnInit() {
   }
 
+  //This function send data to DB
   onSignup(signupForm: NgForm) {
-
     //console.log(signupForm.value.firstname);
-    console.log(signupForm.value);
-    this.signupService.addUser({
-      id: 0,
-      username: signupForm.value.username,
-      password: signupForm.value.password,
-      lastName: signupForm.value.lastname,
-      firstName: signupForm.value.firstname,
-      email: signupForm.value.email
-    }).subscribe(data => {
-      console.log(data);
-    });
+      console.log(signupForm.value);
+        this.signupService.addUser({
+          id: 0,
+          username: signupForm.value.username,
+          password: signupForm.value.password,
+          lastName: signupForm.value.lastname,
+          firstName: signupForm.value.firstname,
+          email: signupForm.value.email
+        }).subscribe(message => {
+          console.log(message);
+          if (message['success'] == false) {
+            this.alertMsg.error('Something went wrong! Please try again!')
+          }
+        });
   }
 }

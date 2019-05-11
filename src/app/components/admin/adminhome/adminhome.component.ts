@@ -1,4 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
+
+export interface UserList {
+  userid: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  role: {
+      roleName: string;
+  }
+}
 
 @Component({
   selector: 'app-adminhome',
@@ -6,32 +20,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adminhome.component.css']
 })
 export class AdminhomeComponent implements OnInit {
-  displayedColumns = ['userid', 'firstName', 'lastName', 'email', 'username'];
-  constructor() { }
+  displayedColumns = ['userid', 'firstName', 'lastName', 'email', 'username', 'role'];
 
-  dataSource = ELEMENT_DATA;
+  userList: any;
+  dataSource: Object;
+
+  constructor(private fetchDbService: FetchDatabaseService, 
+              private loginservice: LoginService,
+              private router: Router) { }
   ngOnInit() {
   }
-}
 
-export interface UserList{
-  userid: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  username: string;
-}
+  logout() {
+    this.loginservice.userLogOut();
+    this.router.navigate(['/login']);
+  }
 
-const ELEMENT_DATA: UserList[] = [
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'},
-  {userid: 100, firstName: 'Exam', lastName: 'Ple', email: 'example@test.com', username: 'test123'}
-];
+  getAllUsers() {
+    this.fetchDbService.getAllAccrounts().subscribe(datas => {
+      // this.userList = datas;
+      this.userList = datas;
+      console.log(this.userList);
+      this.dataSource = datas;
+    });
+  }
+}
