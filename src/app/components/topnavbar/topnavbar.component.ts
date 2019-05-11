@@ -8,11 +8,12 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class TopnavbarComponent implements OnInit {
 
-  username: string = sessionStorage.getItem("username");
+  username: string;
 
   constructor(private loginservice: LoginService) { }
 
   ngOnInit() {
+    this.username = sessionStorage.getItem("username");
   }
   
   

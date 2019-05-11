@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HttpClientModule } from '@angular/common/http';
 
 // Imports for Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
-//import {FlexLayoutModule} from '@angular/flex-layout'; //<--This path currently throw an ERROR
+import { SliderModule } from 'angular-image-slider';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 //This is the normal component imports
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -29,6 +28,7 @@ import { FooterbarComponent } from './components/footerbar/footerbar.component';
 import { AlertMessageComponent } from './components/utils/alert-message/alert-message.component';
 import { AlertMessageService } from './services/alert-message.service';
 import { SignupService } from './services/signup.service';
+import { AdminhomeComponent } from './components/admin/adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,8 @@ import { SignupService } from './services/signup.service';
     MovieComponent,
     UserhomeComponent,
     FooterbarComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    AdminhomeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +51,11 @@ import { SignupService } from './services/signup.service';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule //This is for controlling form to make it work in Angular 
-    //FlexLayoutModule
+    FormsModule, //This is for controlling form to make it work in Angular 
+    SliderModule,
+    BrowserAnimationsModule,
+    NgImageSliderModule,
+
   ],
   providers: [
     SearchMovieService,

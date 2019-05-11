@@ -1,0 +1,51 @@
+#adminhomeCard {
+    width: 96%;
+    margin: 10px auto;
+    align-content: center;
+    text-align: center;
+}
+
+#smallCard {
+    width: 30vh;
+    height: 30vh;
+    align-content: center;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#topDiv {
+    display: flex;
+    height: 32vh;
+    align-items: center;
+    align-content: center;
+    overflow-y: auto;
+}
+
+#label01 {
+    height: 10vh;
+    overflow: auto;
+}
+
+#label02 {
+    padding: 40px;
+    overflow: auto;
+}
+
+mat-expansion-panel {
+    width: 98%;
+    margin: 10px auto;
+}
+
+.dataTable {
+    height: 400px;
+    overflow: auto;
+}
+  
+table {
+    width: 100%;
+}
+
+td {
+    text-align: left;
+}
