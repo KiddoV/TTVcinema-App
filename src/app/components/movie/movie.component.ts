@@ -22,8 +22,8 @@ export class MovieComponent implements OnInit {
       this.searchMovieService.getMovieById(id).subscribe(data => {
         this.movie = data;
 
-        console.log(this.movie.poster_path)
-        console.log(this.movie);
+        //console.log(this.movie.poster_path)
+        //console.log(this.movie);
       });
     });
 

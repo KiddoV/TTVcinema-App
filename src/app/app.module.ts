@@ -28,7 +28,7 @@ import { FooterbarComponent } from './components/footerbar/footerbar.component';
 import { AlertMessageComponent } from './components/utils/alert-message/alert-message.component';
 import { AlertMessageService } from './services/alert-message.service';
 import { SignupService } from './services/signup.service';
-import { AdminhomeComponent } from './components/admin/adminhome/adminhome.component';
+import { AdminhomeComponent, MoreMovieInfoDialog } from './components/admin/adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { AdminhomeComponent } from './components/admin/adminhome/adminhome.compo
     UserhomeComponent,
     FooterbarComponent,
     AlertMessageComponent,
-    AdminhomeComponent
+    AdminhomeComponent, MoreMovieInfoDialog, //These two in the same component file | dialogbox need to add here
+
   ],
   imports: [
     BrowserModule,
@@ -57,6 +58,9 @@ import { AdminhomeComponent } from './components/admin/adminhome/adminhome.compo
     NgImageSliderModule,
     ReactiveFormsModule
 
+  ],
+  entryComponents: [
+    MoreMovieInfoDialog //dialogbox need to add here
   ],
   providers: [
     SearchMovieService,

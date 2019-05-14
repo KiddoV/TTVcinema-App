@@ -11,6 +11,7 @@
 }
 
 #userleftNav{
+    float: left;
     text-align: center;
     left: 5px;
     width: 20%;
@@ -22,7 +23,7 @@ a {
 }
 
 #userContentDiv {
-    margin-right: 0;
-    left: 0;
-    width: 75%;
+    float: right;
+    width: 78%;
+    height: 100vh;
 }

@@ -23,4 +23,9 @@ export class SearchMovieService {
   getMovieById(id: number) {
     return this.http.get(this.mainUrl + 'movie/' + id + '?api_key=' + apiKey);
   }
+
+  //Get upcoming movie
+  getUpcomingMovies() {
+    return this.http.get(this.mainUrl + 'movie/upcoming?api_key=' + apiKey + '&language=en-US&page=1');
+  }
 }
