@@ -34,9 +34,9 @@ export class MovieComponent implements OnInit {
               ) {}
 
   movieTimes: MovieTimes[] = [
-    { value: '3:00PM', viewValue: '03:00 PM' },
-    { value: '6:00PM', viewValue: '06:00 PM' },
-    { value: '9:00PM', viewValue: '09:00 PM' }
+    { value: '3:00PM', viewValue: 'at 03:00 PM TODAY' },
+    { value: '6:00PM', viewValue: 'at 06:00 PM TODAY' },
+    { value: '9:00PM', viewValue: 'at 09:00 PM TODAY' }
   ]
 
   ngOnInit() {
