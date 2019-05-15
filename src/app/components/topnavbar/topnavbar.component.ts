@@ -20,6 +20,6 @@ export class TopnavbarComponent implements OnInit {
   
     logout() {
       this.loginservice.userLogOut();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/welcome']);
   }
 }
