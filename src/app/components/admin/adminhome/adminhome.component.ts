@@ -70,17 +70,14 @@ export class AdminhomeComponent implements OnInit {
   styleUrls: ['./adminhome.component.css']
 })
 export class MoreMovieInfoDialog {
-  movieTimeValue: string;
   title: string;
   id: any;
   poster: string;
+  runtime: any;
+  status: string;
+  vote_average: any;
   time: string;
-  movieTimes: MovieTimes[] = [
-    { value: '3:00PM', viewValue: '03:00 PM' },
-    { value: '6:00PM', viewValue: '06:00 PM' },
-    { value: '9:00PM', viewValue: '09:00 PM' }
-  ]
-
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private searchMovieService: SearchMovieService,
@@ -95,6 +92,9 @@ export class MoreMovieInfoDialog {
         this.id = movie["id"];
         this.poster = movie["poster_path"];
         this.title = movie['title'];
+        this.runtime = movie['runtime'];
+        this.status = movie['status'];
+        this.vote_average = movie['vote_average'];
       })
   }
 
@@ -112,9 +112,4 @@ export class MoreMovieInfoDialog {
       }
     });
   }
-}
-
-export interface MovieTimes {
-  value: string;
-  viewValue: string
 }

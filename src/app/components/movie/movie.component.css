@@ -27,6 +27,9 @@
     position: absolute;
     right: 20px;
     top: 95px;
+
+    background-color: rgba(105, 105, 105, 0.4);
+    border-radius: 10px;
 }
 
 td {

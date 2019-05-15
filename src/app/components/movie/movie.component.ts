@@ -41,7 +41,6 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.router.params.subscribe((params) => {
       const id = params['movieID'];
       this.movieId = params['movieID'];
@@ -49,6 +48,8 @@ export class MovieComponent implements OnInit {
         this.movie = data;
         //console.log(this.movie.poster_path)
         //console.log(this.movie);
+        this.fetchDB.isMovieInTheater(data['id']);
+        console.log(data['id']);
       });
     });
   }

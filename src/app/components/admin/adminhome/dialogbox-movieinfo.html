@@ -1,11 +1,13 @@
-<h1 mat-dialog-title>Movie Infomation</h1>
+<h1 mat-dialog-title style="color: #c9c9c9;">Movie Infomation</h1>
 <div mat-dialog-content>
     <h3>{{title}}</h3>
     <p>Movie ID: {{id}}</p>
-
+    <p>Run time: {{runtime}} minutes</p>
+    <p>Status: {{status}}</p>
+    <p>Voting average: {{vote_average}}/10</p>
     <mat-divider></mat-divider>
     
     <div style="text-align: center;">
-        <button mat-button (click)="sendMovieToDb()">Add This Movie To Theater!</button>
+        <button mat-button (click)="sendMovieToDb()" style="margin: 20px auto;">Add This Movie To Theater!</button>
     </div>
 </div>

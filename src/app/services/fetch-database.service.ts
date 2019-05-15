@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CloseScrollStrategy } from '@angular/cdk/overlay';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,16 @@ export class FetchDatabaseService {
 
   addTicket(data: any) {
     return this.http.post(this.mainUri + '/ticket', data);
+  }
+
+  isMovieInTheater(mId: any) {
+    this.http.get(this.mainUri + '/movie/' + mId).subscribe(res => {
+      console.log(res);
+      if(res == null) {
+        return false;
+      } else {
+        return true;
+      }
+    })
   }
 }
