@@ -25,7 +25,7 @@
                     <mat-icon>info</mat-icon>Your Info
                 </a>
                 <mat-divider></mat-divider>
-                <a mat-menu-item>
+                <a mat-menu-item (click)="logout()">
                     <mat-icon>logout</mat-icon>Logout
                 </a>
             </mat-menu>
@@ -40,7 +40,7 @@
                     <mat-icon>dashboard</mat-icon>Dashboard
                 </a>
                 <mat-divider></mat-divider>
-                <a mat-menu-item>
+                <a mat-menu-item (click)="logout()">
                     <mat-icon>logout</mat-icon>Logout
                 </a>
             </mat-menu>

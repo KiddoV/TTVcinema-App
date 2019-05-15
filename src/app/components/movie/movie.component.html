@@ -38,8 +38,10 @@
 <mat-card id="movieDetailContainer" *ngIf="showDiv">
     <h3>Your Order</h3>
     <mat-card id="orderCard">
+        <div style="text-align: center; padding: 5px;">
         <h6>Movie Title: {{movie.original_title}}</h6>
         <h6>Runtime: {{movie.runtime}} mins</h6>
+        </div>
         <mat-divider></mat-divider>
         <h6>Show Time: </h6>
         <mat-select [(value)]="showTime" placeholder="Showtime available...">
@@ -56,11 +58,11 @@
         <mat-divider></mat-divider>
         <h6>Payment:</h6>
         <mat-form-field>
-            <input matInput placeholder="Card Holder Name">
+            <input matInput placeholder="Card Holder Name" required>
         </mat-form-field>
         <br>
         <mat-form-field>
-            <input matInput placeholder="Billing Address">
+            <input matInput placeholder="Billing Address" required>
         </mat-form-field>
         <br>
         <mat-form-field>
@@ -72,7 +74,7 @@
         </mat-form-field>
         <mat-divider></mat-divider>
         <div style="text-align: center;">
-            <button mat-button (click)="buyTicket()">Submit</button>
+            <button id="submitBtn" mat-button (click)="buyTicket()">Submit</button>
         </div>
     </mat-card>
 </mat-card>

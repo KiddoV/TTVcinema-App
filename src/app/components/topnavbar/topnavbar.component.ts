@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topnavbar',
@@ -8,7 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class TopnavbarComponent implements OnInit {
 
-  constructor(private loginservice: LoginService) {
+  constructor(private loginservice: LoginService,
+              private router: Router) {
     
    }
 
@@ -16,4 +18,8 @@ export class TopnavbarComponent implements OnInit {
   }
   
   
+    logout() {
+      this.loginservice.userLogOut();
+      this.router.navigate(['/login']);
+  }
 }

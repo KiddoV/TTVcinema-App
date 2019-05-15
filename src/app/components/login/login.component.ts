@@ -34,13 +34,16 @@ export class LoginComponent implements OnInit {
       if (returnVal['username'] == loginForm.value.username && returnVal['role']['roleName'] == 'user') {
         sessionStorage.setItem('userInfo', JSON.stringify(returnVal));
         sessionStorage.setItem('username', loginForm.value.username);
+        this.alertMsgService.openSnackBarSuccess('Login Successfully', 'Welcome ' + returnVal['firstName'] + '!');
         this.router.navigate(['/user-home']);
       } else if (returnVal['username'] == loginForm.value.username && returnVal['role']['roleName'] == 'admin') {
         sessionStorage.setItem('userInfo', JSON.stringify(returnVal));
         sessionStorage.setItem('username', loginForm.value.username);
+        this.alertMsgService.openSnackBarSuccess('Login Successfully', 'Welcome ADMIN!');
         this.router.navigate(['/admin-home']);
       } else {
         this.alertMsgService.error('Wrong username or password!');
+        this.alertMsgService.openSnackBarError('Wrong Username or Password', 'Try again!');
         this.router.navigate(['/login']);
       }
     });
