@@ -18,3 +18,16 @@ button {
   background-color: #537916;
 }
 
+/* Change snack-bar width */
+.mat-snack-bar-container {
+  max-width: 100% !important;
+}
+
+.mat-simple-snackbar {
+  display: flex;
+  color: white;
+  /* font-size: 10px !important;  */
+  /* min-height: 70px !important; */
+  align-items: center !important;
+  justify-content: center !important;
+}

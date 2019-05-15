@@ -3,7 +3,7 @@ import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { SearchMovieService } from 'src/app/services/search-movie.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { AlertMessageService } from 'src/app/services/alert-message.service';
 
 @Component({
@@ -96,7 +96,8 @@ export class MoreMovieInfoDialog {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private searchMovieService: SearchMovieService,
     private fetchData: FetchDatabaseService,
-    private alertMsg: AlertMessageService) { }
+    private alertMsg: AlertMessageService,
+    public dialogRef: MatDialogRef<MoreMovieInfoDialog>) { }
 
   ngOnInit() {
 
@@ -125,5 +126,9 @@ export class MoreMovieInfoDialog {
         this.alertMsg.openSnackBarError('Something went wrong!', 'Please try again!');
       }
     });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

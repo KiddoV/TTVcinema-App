@@ -35,8 +35,9 @@
     </div>
 </mat-card>
 <div id="ticketBtnDiv">
-    <button *ngIf="movieInTheater" mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
+    <button *ngIf="movieInTheater && loginservice.isUserLogin()" mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
     <button *ngIf="!movieInTheater" mat-button id="ticketBtn01" disabled>SORRY! This Movie Currently Not In Our Theater!</button>
+    <button *ngIf="!loginservice.isUserLogin()" mat-button id="ticketBtn01" style="background-color: rgb(213, 61, 91);" routerLink="/login" routerLinkActive="active">Please Login To Buy A Ticket!</button>
 </div>
 
 <mat-card id="movieDetailContainer" *ngIf="showDiv">
@@ -56,8 +57,8 @@
         <mat-divider></mat-divider>
         <h6>Ticket Type:</h6>
             <mat-radio-group [(ngModel)]="ticketType">
-                <mat-radio-button value="Adult">Adult</mat-radio-button>
-                <mat-radio-button value="Child">Children</mat-radio-button>
+                <mat-radio-button value="Adult">Adult ($14.00)</mat-radio-button>
+                <mat-radio-button value="Child">Children ($10.00)</mat-radio-button>
             </mat-radio-group>
         <mat-divider></mat-divider>
         <h6>Payment:</h6>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 //to use Route parameter @Viet
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {Router, ActivatedRoute, ParamMap, RouterLink} from '@angular/router';
 
 import { SearchMovieService } from 'src/app/services/search-movie.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
+import { LoginService } from 'src/app/services/login.service';
 
 export interface MovieTimes {
   value: string;
@@ -29,10 +30,11 @@ export class MovieComponent implements OnInit {
   buttonName = "BUY TICKET NOW";
   movie: any; //to hold a movie object @Viet
 
-  constructor(private router: ActivatedRoute, 
+  constructor(private router: ActivatedRoute,
+              private routerLink: Router,
               private searchMovieService: SearchMovieService,
-              private fetchDB: FetchDatabaseService
-              ) {}
+              private fetchDB: FetchDatabaseService,
+              private loginservice: LoginService) {}
 
   movieTimes: MovieTimes[] = [
     { value: '3:00PM', viewValue: 'at 03:00 PM TODAY' },
@@ -57,10 +59,10 @@ export class MovieComponent implements OnInit {
       console.log(res);
       if(res['success']) {
         this.movieInTheater = true;
-        console.log("True here!");
+        //console.log("True here!");
       } else {
         this.movieInTheater = false;
-        console.log("False here!");
+        //console.log("False here!");
       }
     });    
   }
@@ -95,9 +97,7 @@ export class MovieComponent implements OnInit {
         type: this.ticketType
       }
     }
-
-    console.log(data);
-
+    //console.log(data);
     this.fetchDB.addTicket(data).subscribe(resMsg => {
       console.log(resMsg);
     });
