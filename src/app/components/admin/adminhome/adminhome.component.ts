@@ -3,7 +3,7 @@ import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { SearchMovieService } from 'src/app/services/search-movie.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatTableDataSource } from '@angular/material';
 import { AlertMessageService } from 'src/app/services/alert-message.service';
 
 @Component({
@@ -19,8 +19,8 @@ export class AdminhomeComponent implements OnInit {
   totalMovieInDb: number;
   dataSource: Object;
   dataSource02: Object;
-  dataSource03: any;
-
+  dataSource03 = new MatTableDataSource<Object>();
+  dataSourceSum = [];
   mIdDb: any;
 
 
@@ -43,18 +43,23 @@ export class AdminhomeComponent implements OnInit {
 
     this.searchMovieService.getUpcomingMovies().subscribe(upcomingMovies => {
       this.dataSource02 = upcomingMovies['results'];
-    })
+      console.log(this.dataSource02);
+      
+    });
 
-    // this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
-    //   for (var i = 0; i < Object.keys(datas).length; i++) {
-    //     this.mIdDb = datas;
-    //     //console.log(this.mIdDb[i]['movieApiId']);
-    //     this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
-    //       this.dataSource03 = datas;
-    //       console.log(datas);
-    //     });
-    //   }
-    // });
+    //This is ERROR
+    this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
+      for (var i = 0; i < Object.keys(datas).length; i++) {
+        this.mIdDb = datas;
+        //console.log(this.mIdDb[i]['movieApiId']);
+        this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
+          //this.dataSource03 = datas;
+          this.dataSourceSum.push(datas); 
+        });
+      }
+      console.log(this.dataSourceSum);
+      this.dataSource03.data = this.dataSourceSum;
+    });
   }
 
   logout() {
