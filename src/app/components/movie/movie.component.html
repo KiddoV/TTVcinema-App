@@ -23,7 +23,9 @@
             </tr>
             <tr>
                 <td>Overview:</td>
-                <td><div style="height: 170px; overflow-y: scroll;">{{movie.overview}}</div></td>
+                <td>
+                    <div style="height: 170px; overflow-y: scroll;">{{movie.overview}}</div>
+                </td>
             </tr>
 
         </table>
@@ -38,8 +40,39 @@
     <mat-card id="orderCard">
         <h6>Movie Title: {{movie.original_title}}</h6>
         <h6>Runtime: {{movie.runtime}} mins</h6>
+        <mat-divider></mat-divider>
         <h6>Show Time: </h6>
-
-        <button mat-button>Submit</button>
+        <mat-select [(value)]="showTime" placeholder="Showtime available...">
+            <mat-option *ngFor="let movieTime of movieTimes" [value]="movieTime.value">
+                {{movieTime.viewValue}}
+            </mat-option>
+        </mat-select>
+        <mat-divider></mat-divider>
+        <h6>Ticket Type:</h6>
+            <mat-radio-group [(ngModel)]="ticketType">
+                <mat-radio-button value="Adult">Adult</mat-radio-button>
+                <mat-radio-button value="Child">Children</mat-radio-button>
+            </mat-radio-group>
+        <mat-divider></mat-divider>
+        <h6>Payment:</h6>
+        <mat-form-field>
+            <input matInput placeholder="Card Holder Name">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Billing Address">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input [(ngModel)]="cardNumber" type="number" matInput placeholder="Card Number (16 digits)" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input type="number" matInput placeholder="CVV (3 digits)" required>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <div style="text-align: center;">
+            <button mat-button (click)="buyTicket()">Submit</button>
+        </div>
     </mat-card>
 </mat-card>

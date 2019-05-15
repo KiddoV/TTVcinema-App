@@ -16,7 +16,9 @@ import {MatSidenavModule,
         MatTabsModule,
         MatExpansionModule,
         MatTableModule,
-        MatSelectModule } from '@angular/material';
+        MatSelectModule,
+        MatRippleModule,
+        MatRadioModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -35,7 +37,9 @@ import {MatSidenavModule,
         MatTabsModule,
         MatExpansionModule,
         MatTableModule,
-        MatSelectModule
+        MatSelectModule,
+        MatRippleModule,
+        MatRadioModule
     ],
     exports: [
         MatSidenavModule,
@@ -53,7 +57,9 @@ import {MatSidenavModule,
         MatTabsModule,
         MatExpansionModule,
         MatTableModule,
-        MatSelectModule
+        MatSelectModule,
+        MatRippleModule,
+        MatRadioModule
     ]
 })
 

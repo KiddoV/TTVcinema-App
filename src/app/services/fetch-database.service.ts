@@ -21,4 +21,8 @@ export class FetchDatabaseService {
     console.log(data);
     return this.http.post(this.mainUri + '/movie', data);
   }
+
+  addTicket(data: any) {
+    return this.http.post(this.mainUri + '/ticket', data);
+  }
 }

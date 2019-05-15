@@ -59,3 +59,7 @@ button {
     margin: 10px auto;
     width: 60vh;
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}
