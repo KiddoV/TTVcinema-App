@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs'; //This module to control if user login or not @Viet
 import { User, UserNameAndPass } from './user';
+import { AlertMessageService } from './alert-message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { User, UserNameAndPass } from './user';
 export class LoginService {
   private mainUri: string = "http://13.58.182.105:8085/cinema/account/login";
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private alertMsgSer: AlertMessageService) { }
 
   //This function to check username and password
   checkLogin(userNameAndPass: UserNameAndPass) {
@@ -39,6 +40,7 @@ export class LoginService {
   //Remove all user info if they logout 
   userLogOut() {
     sessionStorage.clear();
+    this.alertMsgSer.openSnackBarSuccess('You have been logged out!', 'BYE!');
   }
 
   //Restrict user from directly using url to login

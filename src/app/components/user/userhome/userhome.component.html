@@ -2,12 +2,14 @@
   <mat-card id="userleftNav">
     <img id="userImg" src="../assets/imgs/user-img-default.png" width="60%">
     <br><br>
-    <h6>User Name</h6>
+    <h6>{{userInfo.firstName}} {{userInfo.lastName}}</h6>
     <mat-divider></mat-divider>
     <br>
-    <a mat-button>Your Information</a>
-    <a mat-button>Payment Method</a>
-    <a mat-button (click)="logout()">Logout</a>
+    <a mat-button id="tabBtn">Your Information</a>
+    <a mat-button id="tabBtn">Payment Method</a>
+    <a mat-button id="tabBtn">Your Tickets</a>
+    <mat-divider></mat-divider>
+    <a mat-button (click)="logout()" id="tabBtn">Logout</a>
   </mat-card>
   
   <mat-card id="userContentDiv">

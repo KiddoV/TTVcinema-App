@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
         }).subscribe(message => {
           console.log(message);
           if (message['success'] == false) {
-            this.alertMsg.error('Something went wrong! Please try again!')
+            
           }
         });
   }

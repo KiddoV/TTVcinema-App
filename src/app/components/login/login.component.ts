@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
         this.alertMsgService.openSnackBarSuccess('Login Successfully', 'Welcome ADMIN!');
         this.router.navigate(['/admin-home']);
       } else {
-        this.alertMsgService.error('Wrong username or password!');
         this.alertMsgService.openSnackBarError('Wrong Username or Password', 'Try again!');
         this.router.navigate(['/login']);
       }

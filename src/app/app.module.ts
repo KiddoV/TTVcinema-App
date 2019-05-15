@@ -26,7 +26,6 @@ import { UserhomeComponent } from './components/user/userhome/userhome.component
 import { SearchMovieService } from './services/search-movie.service';
 import { LoginService } from './services/login.service';
 import { FooterbarComponent } from './components/footerbar/footerbar.component';
-import { AlertMessageComponent } from './components/utils/alert-message/alert-message.component';
 import { AlertMessageService } from './services/alert-message.service';
 import { SignupService } from './services/signup.service';
 import { AdminhomeComponent, MoreMovieInfoDialog } from './components/admin/adminhome/adminhome.component';
@@ -43,7 +42,6 @@ import { AdminhomeComponent, MoreMovieInfoDialog } from './components/admin/admi
     MovieComponent,
     UserhomeComponent,
     FooterbarComponent,
-    AlertMessageComponent,
     AdminhomeComponent, MoreMovieInfoDialog, //These two in the same component file | dialogbox need to add here
 
   ],

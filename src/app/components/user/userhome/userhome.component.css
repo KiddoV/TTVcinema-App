@@ -27,3 +27,7 @@ a {
     width: 78%;
     height: 100vh;
 }
+
+#tabBtn {
+    width: 100%;
+}

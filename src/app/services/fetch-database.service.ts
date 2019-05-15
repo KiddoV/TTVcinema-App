@@ -14,7 +14,7 @@ export class FetchDatabaseService {
   }
 
   getAllMoviesInDB() {
-    return this.http.get(this.mainUri + "/movie/tmdb/all");
+    return this.http.get(this.mainUri + "/movie/all");
   }
 
   addMovie(data: any) {

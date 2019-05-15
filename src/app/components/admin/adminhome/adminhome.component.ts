@@ -100,18 +100,15 @@ export class MoreMovieInfoDialog {
 
   sendMovieToDb() {
     let data = {
-      movie: {
         movieApiId: this.id
-      },
-      movieTime: this.movieTimeValue
     }
     // console.log(this.movieTimeValue)
     this.fetchData.addMovie(data).subscribe(resMsg => {
       console.log(resMsg['success']);
       if (resMsg['success']) {
-        this.alertMsg.success('Add movie successfuly!');
+        this.alertMsg.openSnackBarSuccess('Added movie successfuly!', 'NICE!');
       } else {
-        this.alertMsg.error('Failed to add movie!');
+        this.alertMsg.openSnackBarError('Something went wrong!', 'Please try again!');
       }
     });
   }

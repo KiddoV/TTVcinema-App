@@ -9,9 +9,12 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class UserhomeComponent implements OnInit {
 
+  userInfo: any;
+
   constructor(private router: Router, private loginservice: LoginService) { }
 
   ngOnInit() {
+    this.userInfo = JSON.parse(sessionStorage.getItem('userInfo'));
   }
 
   logout() {
