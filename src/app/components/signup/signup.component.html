@@ -20,10 +20,6 @@
         <mat-label>Password</mat-label>
         <input ngModel name="password" matInput placeholder="New Password" required>
       </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Confirm Password</mat-label>
-        <input ngModel name="confirmPassword" matInput placeholder="Confirm Your Password" required>
-      </mat-form-field>
       <button [disabled]="signupForm.invalid" id="signupBttn" mat-raised-button style="outline: none;">Submit</button>
     </form>
   </div>
