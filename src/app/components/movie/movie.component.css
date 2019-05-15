@@ -36,3 +36,26 @@ td {
 .btn-success {
     margin-right: 20px;
 }
+
+button {
+    outline: none;
+}
+
+#ticketBtnDiv {
+    margin-top: 10px;
+    margin-left: 24%;
+    margin-bottom: 20px;
+}
+
+#ticketBtn01 {
+    height: 50px;
+    font-size: 20px;
+    width: 70%;
+    background-color: #54ceff;
+    color: white;
+}
+
+#orderCard {
+    margin: 10px auto;
+    width: 60vh;
+}

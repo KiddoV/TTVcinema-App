@@ -1,9 +1,23 @@
+<h3>Current Movies In Theater</h3>
 <mat-card id="slideshowContainer">
-    <h3>Current Movies In Theater</h3>
-        <angular-image-slider id="slider" [images]="imagesUrl01"></angular-image-slider>
+    <div id="row" *ngFor="let img of imgs">
+        <mat-card id="imgCard">
+          <img mat-card-image id="moviePoster" src="https://image.tmdb.org/t/p/w500/{{img.poster_path}}"/>
+          <mat-card-footer>
+            <a id="moreDetailBttn" mat-button routerLink="/movie/{{img.id}}">More Detail</a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
 </mat-card>
 
+<h3>Upcomming Movies</h3>
 <mat-card id="slideshowContainer">
-    <h3>Upcomming Movies</h3>
-        <angular-image-slider id="slider" [images]="imagesUrl02"></angular-image-slider>
+    <div id="row" *ngFor="let img of imgs">
+        <mat-card id="imgCard">
+          <img mat-card-image id="moviePoster" src="https://image.tmdb.org/t/p/w500/{{img.poster_path}}"/>
+          <mat-card-footer>
+            <a id="moreDetailBttn" mat-button routerLink="/movie/{{img.id}}">More Detail</a>
+          </mat-card-footer>
+        </mat-card>
+      </div>
 </mat-card>

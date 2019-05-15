@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchMovieService } from 'src/app/services/search-movie.service';
 
 @Component({
   selector: 'app-movie-slideshow',
@@ -6,24 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-slideshow.component.css']
 })
 export class MovieSlideshowComponent implements OnInit {
+  public imgs: any;
 
+  constructor(private searchMovieService: SearchMovieService) {}
 
-
-  ngOnInit() { }
-  imagesUrl01 = [
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/xnopI5Xtky18MPhK40cZAGAOVeV.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg'
-  ];
-
-  imagesUrl02 = [
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/xnopI5Xtky18MPhK40cZAGAOVeV.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg',
-    'https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg'
-  ];
-
+  ngOnInit() { 
+    this.searchMovieService.getUpcomingMovies().subscribe(datas => {
+      for (var i = 0; i < 5; i++) {
+        this.imgs = datas['results'];
+      }
+    })
+  }
 }

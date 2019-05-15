@@ -25,7 +25,7 @@ export class LoginService {
 
   isAdmin() {
     let admin = JSON.parse(sessionStorage.getItem('userInfo'))['role']['roleName'];
-    if (admin == 'manager') {
+    if (admin == 'admin') {
       return true;
     }
     return false;

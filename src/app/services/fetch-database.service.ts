@@ -12,4 +12,13 @@ export class FetchDatabaseService {
   getAllAccrounts() {
     return this.http.get(this.mainUri + "/account/all");
   }
+
+  getAllMoviesInDB() {
+    return this.http.get(this.mainUri + "/movie/tmdb/all");
+  }
+
+  addMovie(data: any) {
+    console.log(data);
+    return this.http.post(this.mainUri + '/movie', data);
+  }
 }

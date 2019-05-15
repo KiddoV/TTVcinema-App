@@ -29,11 +29,17 @@
         </table>
     </div>
 </mat-card>
-<!-- =======
-<h1>{{movie["title"]}}</h1>
-<img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="" width="400px" height="400px">
-<p>Description:</p>
-<p>{{movie["overview"]}}</p>
-<button class="btn btn-success">Add Movie</button>
-<a routerLink="/search-movie"> <button class="btn btn-primary">Back</button></a>
->>>>>>> e3e41dcb9a5036082561b7e89383caf40ee9d338 -->
+<div id="ticketBtnDiv">
+    <button mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
+</div>
+
+<mat-card id="movieDetailContainer" *ngIf="showDiv">
+    <h3>Your Order</h3>
+    <mat-card id="orderCard">
+        <h6>Movie Title: {{movie.original_title}}</h6>
+        <h6>Runtime: {{movie.runtime}} mins</h6>
+        <h6>Show Time: </h6>
+
+        <button mat-button>Submit</button>
+    </mat-card>
+</mat-card>

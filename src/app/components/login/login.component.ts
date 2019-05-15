@@ -28,12 +28,14 @@ export class LoginComponent implements OnInit {
     
     this.loginservice.checkLogin({username: loginForm.value.username, password: loginForm.value.password}).subscribe(
       returnVal => {
+        console.log(returnVal);
+        
       // console.log('Value return: ' + returnVal['success']);
       if (returnVal['username'] == loginForm.value.username && returnVal['role']['roleName'] == 'user') {
         sessionStorage.setItem('userInfo', JSON.stringify(returnVal));
         sessionStorage.setItem('username', loginForm.value.username);
         this.router.navigate(['/user-home']);
-      } else if (returnVal['username'] == loginForm.value.username && returnVal['role']['roleName'] == 'manager') {
+      } else if (returnVal['username'] == loginForm.value.username && returnVal['role']['roleName'] == 'admin') {
         sessionStorage.setItem('userInfo', JSON.stringify(returnVal));
         sessionStorage.setItem('username', loginForm.value.username);
         this.router.navigate(['/admin-home']);

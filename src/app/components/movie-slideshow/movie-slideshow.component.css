@@ -1,8 +1,28 @@
 #slideshowContainer {
     margin: 20px auto;
     width: 96%;
+    overflow-y: auto;
+    white-space: nowrap;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
-#slider {
-    transition: 0.5s;
+#row {
+    margin: 1% 20px auto;
+    width: 24.5%;
+    background-color: #eee;
+    float: none;
+    height: 90%;
+    display: inline-block;
+    zoom: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+#moreDetailBttn {
+    width: 100%;
 }

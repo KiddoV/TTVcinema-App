@@ -12,7 +12,7 @@ import { AdminhomeComponent } from './components/admin/adminhome/adminhome.compo
 
 const routes: Routes = [
   {path: 'user-home', component: UserhomeComponent, canActivate: [LoginService]},
-  {path: 'admin-home', component: AdminhomeComponent},
+  {path: 'admin-home', component: AdminhomeComponent, canActivate: [LoginService]},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
