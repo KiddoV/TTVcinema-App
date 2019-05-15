@@ -19,6 +19,9 @@ export class AdminhomeComponent implements OnInit {
   totalMovieInDb: number;
   dataSource: Object;
   dataSource02: Object;
+  dataSource03: any;
+
+  mIdDb: any;
 
 
   constructor(private fetchDbService: FetchDatabaseService,
@@ -41,6 +44,17 @@ export class AdminhomeComponent implements OnInit {
     this.searchMovieService.getUpcomingMovies().subscribe(upcomingMovies => {
       this.dataSource02 = upcomingMovies['results'];
     })
+
+    // this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
+    //   for (var i = 0; i < Object.keys(datas).length; i++) {
+    //     this.mIdDb = datas;
+    //     //console.log(this.mIdDb[i]['movieApiId']);
+    //     this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
+    //       this.dataSource03 = datas;
+    //       console.log(datas);
+    //     });
+    //   }
+    // });
   }
 
   logout() {

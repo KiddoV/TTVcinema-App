@@ -25,6 +25,7 @@ export class MovieComponent implements OnInit {
   cardNumber: number;
   ticketType: string;
   movieId: number;
+  movieInTheater :boolean ;
   buttonName = "BUY TICKET NOW";
   movie: any; //to hold a movie object @Viet
 
@@ -46,12 +47,22 @@ export class MovieComponent implements OnInit {
       this.movieId = params['movieID'];
       this.searchMovieService.getMovieById(id).subscribe(data => {
         this.movie = data;
+        console.log(this.movieId);
         //console.log(this.movie.poster_path)
         //console.log(this.movie);
-        this.fetchDB.isMovieInTheater(data['id']);
-        console.log(data['id']);
       });
     });
+
+    this.fetchDB.isMovieInTheater(this.movieId).subscribe(res => {
+      console.log(res);
+      if(res['success']) {
+        this.movieInTheater = true;
+        console.log("True here!");
+      } else {
+        this.movieInTheater = false;
+        console.log("False here!");
+      }
+    });    
   }
 
   toggleDiv() {

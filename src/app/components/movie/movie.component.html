@@ -1,5 +1,8 @@
 <mat-card id="movieDetailContainer">
-    <h1 id="movieTitle">{{movie.original_title}}</h1>
+    <h1 id="movieTitle">{{movie.original_title}} 
+    <span *ngIf="movieInTheater" class="badge badge-pill badge-primary">In Theater</span>
+    <span *ngIf="!movieInTheater" class="badge badge-pill badge-secondary">Not In Theater</span>
+    </h1>
     <img id="moviePoster01" src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" height="100%" width="100%" />
     <img id="moviePoster02" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
 
@@ -32,7 +35,8 @@
     </div>
 </mat-card>
 <div id="ticketBtnDiv">
-    <button mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
+    <button *ngIf="movieInTheater" mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
+    <button *ngIf="!movieInTheater" mat-button id="ticketBtn01" disabled>SORRY! This Movie Currently Not In Our Theater!</button>
 </div>
 
 <mat-card id="movieDetailContainer" *ngIf="showDiv">

@@ -77,3 +77,7 @@ mat-form-field {
     color: white;
     background-color: #54ceff;
 }
+
+#ticketBtn01:disabled {
+    background-color: #d5d5d5;
+}

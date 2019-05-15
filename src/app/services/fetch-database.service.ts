@@ -6,6 +6,7 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
   providedIn: 'root'
 })
 export class FetchDatabaseService {
+  
   private mainUri = 'http://13.58.182.105:8085/cinema';
 
   constructor(private http: HttpClient) { }
@@ -28,13 +29,6 @@ export class FetchDatabaseService {
   }
 
   isMovieInTheater(mId: any) {
-    this.http.get(this.mainUri + '/movie/' + mId).subscribe(res => {
-      console.log(res);
-      if(res == null) {
-        return false;
-      } else {
-        return true;
-      }
-    })
+    return this.http.get(this.mainUri + '/movie/' + mId);
   }
 }

@@ -20,7 +20,6 @@ export class MovieSlideshowComponent implements OnInit {
     this.fetchDB.getAllMoviesInDB().subscribe(datas => {
       for (var i = 0; i < Object.keys(datas).length; i++) {
         this.mIdDb = datas;
-
         //console.log(this.mIdDb[i]['movieApiId']);
         this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
           this.dbImgs.push({id: datas['id'], poster: datas['poster_path']});
