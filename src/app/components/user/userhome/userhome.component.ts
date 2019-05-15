@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 
 @Component({
   selector: 'app-userhome',
@@ -21,4 +22,35 @@ export class UserhomeComponent implements OnInit {
     this.loginservice.userLogOut();
     this.router.navigate(['/login']);
   }
+}
+
+////////////////////////////////////////////////
+@Component({
+  selector: 'app-userinfo',
+  templateUrl: './userinfo.component.html',
+  styleUrls: ['./userhome.component.css']
+})
+export class UserInfoComponent implements OnInit {
+  ngOnInit(){}
+
+}
+
+////////////////////////////////////////////////
+@Component({
+  selector: 'app-userticket',
+  templateUrl: './userticket.component.html',
+  styleUrls: ['./userhome.component.css']
+})
+export class UserTicketComponent implements OnInit {
+  ticketDb: any;
+
+  constructor(private fetchDB: FetchDatabaseService) {}
+  ngOnInit(){
+    var info = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.fetchDB.getTicketsById(info['id']).subscribe(tickets => {
+      this.ticketDb = tickets;
+      console.log(tickets);
+    });
+  }
+
 }

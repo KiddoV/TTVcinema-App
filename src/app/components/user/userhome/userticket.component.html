@@ -1,0 +1,11 @@
+<div>
+    <h1>Your Ticket</h1>
+    <mat-card style="overflow: auto; height: 100vh;">
+    <div *ngFor="let info of ticketDb">
+        <div class="ticket">
+            <h3>{{info.id}}</h3>
+        </div>
+    </div>
+    </mat-card>
+</div>
+

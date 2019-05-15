@@ -1,7 +1,7 @@
 <mat-card id="movieDetailContainer">
-    <h1 id="movieTitle">{{movie.original_title}} 
-    <span *ngIf="movieInTheater" class="badge badge-pill badge-primary">In Theater</span>
-    <span *ngIf="!movieInTheater" class="badge badge-pill badge-secondary">Not In Theater</span>
+    <h1 id="movieTitle">{{movie.original_title}}
+        <span *ngIf="movieInTheater" class="badge badge-pill badge-primary">In Theater</span>
+        <span *ngIf="!movieInTheater" class="badge badge-pill badge-secondary">Not In Theater</span>
     </h1>
     <img id="moviePoster01" src="https://image.tmdb.org/t/p/w500/{{movie.backdrop_path}}" height="100%" width="100%" />
     <img id="moviePoster02" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" />
@@ -35,17 +35,22 @@
     </div>
 </mat-card>
 <div id="ticketBtnDiv">
-    <button *ngIf="movieInTheater && loginservice.isUserLogin()" mat-button id="ticketBtn01" (click)="toggleDiv()">{{buttonName}}</button>
-    <button *ngIf="!movieInTheater" mat-button id="ticketBtn01" disabled>SORRY! This Movie Currently Not In Our Theater!</button>
-    <button *ngIf="!loginservice.isUserLogin()" mat-button id="ticketBtn01" style="background-color: rgb(213, 61, 91);" routerLink="/login" routerLinkActive="active">Please Login To Buy A Ticket!</button>
+    <button *ngIf="movieInTheater && loginservice.isUserLogin()" mat-button id="ticketBtn01"
+        (click)="toggleDiv()">{{buttonName}}</button>
+    <button *ngIf="!movieInTheater" mat-button id="ticketBtn01" disabled>SORRY! This Movie Currently Not In Our
+        Theater!</button>
+    <button *ngIf="!loginservice.isUserLogin() && movieInTheater" mat-button id="ticketBtn01"
+        style="background-color: rgb(213, 61, 91);" routerLink="/login" routerLinkActive="active">Please Login To Buy A
+        Ticket!</button>
 </div>
 
 <mat-card id="movieDetailContainer" *ngIf="showDiv">
     <h3>Your Order</h3>
+
     <mat-card id="orderCard">
         <div style="text-align: center; padding: 5px;">
-        <h6>{{movie.original_title}}</h6>
-        <h6>Runtime: {{movie.runtime}} mins</h6>
+            <h6>{{movie.original_title}}</h6>
+            <h6>Runtime: {{movie.runtime}} mins</h6>
         </div>
         <mat-divider></mat-divider>
         <h6>Show Time: </h6>
@@ -56,10 +61,10 @@
         </mat-select>
         <mat-divider></mat-divider>
         <h6>Ticket Type:</h6>
-            <mat-radio-group [(ngModel)]="ticketType">
-                <mat-radio-button value="Adult">Adult ($14.00)</mat-radio-button>
-                <mat-radio-button value="Child">Children ($10.00)</mat-radio-button>
-            </mat-radio-group>
+        <mat-radio-group [(ngModel)]="ticketType">
+            <mat-radio-button value="Adult">Adult ($14.00)</mat-radio-button>
+            <mat-radio-button value="Child">Children ($10.00)</mat-radio-button>
+        </mat-radio-group>
         <mat-divider></mat-divider>
         <h6>Payment:</h6>
         <mat-form-field>
@@ -71,15 +76,17 @@
         </mat-form-field>
         <br>
         <mat-form-field>
-            <input [(ngModel)]="cardNumber" type="number" matInput placeholder="Card Number (16 digits)" required>
+            <input [(ngModel)]="cardNumber" type="number" matInput placeholder="Card Number (16 digits)" maxlength="16"
+                minlength="16" required>
         </mat-form-field>
         <br>
         <mat-form-field>
-            <input type="number" matInput placeholder="CVV (3 digits)" required>
+            <input type="number" matInput placeholder="CVV (3 digits)" maxlength="3" minlength="3" required>
         </mat-form-field>
         <mat-divider></mat-divider>
         <div style="text-align: center;">
             <button id="submitBtn" mat-button (click)="buyTicket()">Submit</button>
         </div>
     </mat-card>
+
 </mat-card>

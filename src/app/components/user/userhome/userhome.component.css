@@ -31,3 +31,16 @@ a {
 #tabBtn {
     width: 100%;
 }
+
+/* ==================================================== */
+/* Ticket Shape! */
+.ticket {
+    color: white;
+    background: #4a4a4a;
+    padding: 35px 30px;
+    margin:20px;
+    border:4px dotted #fff;
+}
+
+  
+  

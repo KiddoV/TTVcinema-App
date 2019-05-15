@@ -19,6 +19,10 @@ export class FetchDatabaseService {
     return this.http.get(this.mainUri + "/movie/all");
   }
 
+  getTicketsById(userId: number) {
+    return this.http.get(this.mainUri + "/ticket/account/" + userId);
+  }
+
   addMovie(data: any) {
     console.log(data);
     return this.http.post(this.mainUri + '/movie', data);

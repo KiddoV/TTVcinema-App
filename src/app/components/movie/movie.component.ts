@@ -7,6 +7,7 @@ import { SearchMovieService } from 'src/app/services/search-movie.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 import { LoginService } from 'src/app/services/login.service';
+import { AlertMessageService } from 'src/app/services/alert-message.service';
 
 export interface MovieTimes {
   value: string;
@@ -34,7 +35,8 @@ export class MovieComponent implements OnInit {
               private routerLink: Router,
               private searchMovieService: SearchMovieService,
               private fetchDB: FetchDatabaseService,
-              private loginservice: LoginService) {}
+              private loginservice: LoginService,
+              private alertMsg: AlertMessageService) {}
 
   movieTimes: MovieTimes[] = [
     { value: '3:00PM', viewValue: 'at 03:00 PM TODAY' },
@@ -100,6 +102,12 @@ export class MovieComponent implements OnInit {
     //console.log(data);
     this.fetchDB.addTicket(data).subscribe(resMsg => {
       console.log(resMsg);
+      if (resMsg['success'] == true) {
+        this.alertMsg.openSnackBarSuccess('Buy TICKET successfuly!', 'See you in TTV(Cinema)');
+        this.routerLink.navigate(['/welcome']);
+      } else {
+        this.alertMsg.openSnackBarError('Something went wrong!', 'Please try again!');
+      }
     });
   }
 }
