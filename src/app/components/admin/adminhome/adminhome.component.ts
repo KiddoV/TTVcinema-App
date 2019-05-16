@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
@@ -15,9 +15,9 @@ import { AlertMessageService } from 'src/app/services/alert-message.service';
   styleUrls: ['./adminhome.component.css']
 })
 export class AdminhomeComponent implements OnInit {
-  displayedColumns = ['userid', 'firstName', 'lastName', 'email', 'username', 'role'];
+  displayedColumns = ['userid', 'firstName', 'lastName', 'email', 'username', 'role', 'tasks'];
   displayedColumns02 = ['id', 'title', 'release_date', 'tasks'];
-  displayedColumns03 = ['id', 'title', 'showtime', 'tasks'];
+  displayedColumns03 = ['id', "title", "tasks"];
   totalUser: number;
   totalMovieInDb: number;
   dataSource: Object;
@@ -25,20 +25,19 @@ export class AdminhomeComponent implements OnInit {
   dataSource03 = new MatTableDataSource<Object>();
   dataSourceSum = [];
   mIdDb: any;
+  userIdFromUserTab = "";
 
 
   constructor(private fetchDbService: FetchDatabaseService,
     private searchMovieService: SearchMovieService,
     private loginservice: LoginService,
     private router: Router,
+    private alertMsgService: AlertMessageService,
     //Inject dialog box
     public dialog: MatDialog) { }
+
   ngOnInit() {
-    this.fetchDbService.getAllAccrounts().subscribe(datas => {
-      // this.userList = datas;
-      this.totalUser = Object.keys(datas).length;
-      //console.log(this.totalUser);
-    });
+    this.fetctGetAllAccounts();
 
     this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
       this.totalMovieInDb = Object.keys(datas).length;
@@ -47,21 +46,16 @@ export class AdminhomeComponent implements OnInit {
     this.searchMovieService.getUpcomingMovies().subscribe(upcomingMovies => {
       this.dataSource02 = upcomingMovies['results'];
       console.log(this.dataSource02);
-      
+
     });
 
-    //This is ERROR
-    this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
-      for (var i = 0; i < Object.keys(datas).length; i++) {
-        this.mIdDb = datas;
-        //console.log(this.mIdDb[i]['movieApiId']);
-        this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
-          //this.dataSource03 = datas;
-          this.dataSourceSum.push(datas); 
-        });
-      }
-      console.log(this.dataSourceSum);
-      this.dataSource03.data = this.dataSourceSum;
+  }
+
+  fetctGetAllAccounts(){
+    this.fetchDbService.getAllAccrounts().subscribe(datas => {
+      // this.userList = datas;
+      this.totalUser = Object.keys(datas).length;
+      //console.log(this.totalUser);
     });
   }
 
@@ -76,6 +70,23 @@ export class AdminhomeComponent implements OnInit {
     });
   }
 
+  getAllCurrentMovies(){
+    this.dataSourceSum = [];
+    this.fetchDbService.getAllMoviesInDB().subscribe(datas => {
+      for (var i = 0; i < Object.keys(datas).length; i++) {
+      this.mIdDb = datas;
+      //for (var i = 0; i < Object.keys(datas).length; i++) {
+         this.searchMovieService.getMovieById(this.mIdDb[i]['movieApiId']).subscribe(datas => {
+           //this.dataSource03 = datas;
+           this.dataSourceSum.push(datas); 
+         });
+      }
+      setTimeout(()=>{
+        this.dataSource03.data = this.dataSourceSum;
+      }, 500);
+    });
+  }
+
   openMovieInfoBox(element: any) {
     this.dialog.open(MoreMovieInfoDialog, {
 
@@ -83,7 +94,37 @@ export class AdminhomeComponent implements OnInit {
     });
     // console.log(element.id); //got the id
   }
+
+  //TODO 
+  deleteMovieInfoBox(element: any) {
+    this.fetchDbService.deleteMovieByApiId(element.id).subscribe(
+      data=>{
+        this.getAllCurrentMovies();
+        this.totalMovieInDb--;
+        this.alertMsgService.openSnackBarSuccess('Deleted Successfully', "hide");
+      },
+      error =>{
+        console.log(error);
+        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "try again");
+      });
+  }
+  //TODO
+  deleteUser(element: any){
+    
+    this.fetchDbService.deleteAccountById(element.id).subscribe(
+      data=>{
+        this.getAllUsers();
+        this.totalUser--;
+        this.alertMsgService.openSnackBarSuccess('Deleted Successfully', "hide");
+      },
+      error =>{
+        console.log(error);
+        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "try again");
+      });
+  }
 }
+
+
 
 //This component for the popup <more movie info> dialogbox
 @Component({
@@ -99,7 +140,7 @@ export class MoreMovieInfoDialog {
   status: string;
   vote_average: any;
   time: string;
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private searchMovieService: SearchMovieService,
@@ -123,7 +164,7 @@ export class MoreMovieInfoDialog {
 
   sendMovieToDb() {
     let data = {
-        movieApiId: this.id
+      movieApiId: this.id
     }
     // console.log(this.movieTimeValue)
     this.fetchData.addMovie(data).subscribe(resMsg => {

@@ -40,7 +40,7 @@
                 <h4>User Management</h4>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <button mat-button style="margin-bottom: 10px; background-color: crimson; color: white; outline: none;"
+            <button mat-button style="margin-bottom: 10px; background-color: rgb(1, 82, 32); color: white; outline: none;"
               (click)="getAllUsers()">Show me all users in Database</button>
 
             <div class="dataTable mat-elevation-z8">
@@ -75,19 +75,16 @@
                   <th mat-header-cell *matHeaderCellDef>Role</th>
                   <td mat-cell *matCellDef="let element"> {{element.role.roleName}} </td>
                 </ng-container>
+                <ng-container matColumnDef="tasks">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element"><a style="margin-bottom: 10px; background-color: crimson; color: white; outline: none;" mat-button (click)="deleteUser(element)">Delete</a>
+                  </td>
+                </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
             </div>
-          </mat-expansion-panel>
-          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h4>Get User By Id</h4>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>Content</p>
           </mat-expansion-panel>
         </mat-accordion>
 
@@ -102,34 +99,35 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <!-- Content begin here -->
-              <h5>Upcoming Movies</h5>
-              <div class="MDataTable mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource02">
-  
-                  <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>Movie Id</th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                  </ng-container>
-  
-                  <ng-container matColumnDef="title">
-                    <th mat-header-cell *matHeaderCellDef>Movie Title</th>
-                    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-                  </ng-container>
-  
-                  <ng-container matColumnDef="release_date">
-                    <th mat-header-cell *matHeaderCellDef>Release Date</th>
-                    <td mat-cell *matCellDef="let element"> {{element.release_date | date: 'MM-dd-yyyy'}} </td>
-                  </ng-container>
+            <h5>Upcoming Movies</h5>
+            <div class="MDataTable mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource02">
 
-                  <ng-container matColumnDef="tasks">
-                    <th mat-header-cell *matHeaderCellDef></th>
-                    <td mat-cell *matCellDef="let element"><a mat-button (click)="openMovieInfoBox(element)">More Info</a></td>
-                  </ng-container>
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef>Movie Id</th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns02; sticky: true"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns02;"></tr>
-                </table>
-              </div>
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>Movie Title</th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="release_date">
+                  <th mat-header-cell *matHeaderCellDef>Release Date</th>
+                  <td mat-cell *matCellDef="let element"> {{element.release_date | date: 'MM-dd-yyyy'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tasks">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element"><a mat-button (click)="openMovieInfoBox(element)">More Info</a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns02; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns02;"></tr>
+              </table>
+            </div>
           </mat-expansion-panel>
           <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
@@ -137,35 +135,33 @@
                 <h4>Movie Management</h4>
               </mat-panel-title>
             </mat-expansion-panel-header>
+            <button mat-button style="margin-bottom: 10px; background-color: crimson; color: white; outline: none;"
+              (click)="getAllCurrentMovies()">Show me current movies</button>
             <!-- content here -->
             <h5>All Current Movies In Theater</h5>
-              <div class="MDataTable mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource03">
-  
-                  <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef>Movie Id</th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                  </ng-container>
-  
-                  <ng-container matColumnDef="title">
-                    <th mat-header-cell *matHeaderCellDef>Movie Title</th>
-                    <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-                  </ng-container>
-  
-                  <ng-container matColumnDef="showtime">
-                    <th mat-header-cell *matHeaderCellDef>Show Time</th>
-                    <td mat-cell *matCellDef="let element">  </td>
-                  </ng-container>
+            <div class="MDataTable mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource03">
 
-                  <ng-container matColumnDef="tasks">
-                    <th mat-header-cell *matHeaderCellDef></th>
-                    <td mat-cell *matCellDef="let element"><a mat-button (click)="openMovieInfoBox(element)">More Info</a></td>
-                  </ng-container>
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef>Movie Id</th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns03; sticky: true"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns03;"></tr>
-                </table>
-              </div>
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef>Movie Title</th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tasks">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element"><a mat-button style="margin-bottom: 10px; background-color: crimson; color: white; outline: none;"  (click)="deleteMovieInfoBox(element)">DELETE</a>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns03; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns03;"></tr>
+              </table>
+            </div>
           </mat-expansion-panel>
         </mat-accordion>
 

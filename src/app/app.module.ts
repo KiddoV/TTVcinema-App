@@ -9,7 +9,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import { SliderModule } from 'angular-image-slider';
 import { NgImageSliderModule } from 'ng-image-slider';
-import { SwiperModule } from 'angular2-useful-swiper';
 
 //This is the normal component imports
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -56,7 +55,6 @@ import { AdminhomeComponent, MoreMovieInfoDialog } from './components/admin/admi
     BrowserAnimationsModule,
     NgImageSliderModule,
     ReactiveFormsModule,
-    SwiperModule
 
   ],
   entryComponents: [
