@@ -5,14 +5,14 @@
     <h6>{{userInfo.firstName}} {{userInfo.lastName}}</h6>
     <mat-divider></mat-divider>
     <br>
-    <a mat-button id="tabBtn">Your Information</a>
-    <a mat-button id="tabBtn">Payment Method</a>
+    <a mat-button id="tabBtn" [routerLink]="['./user-info']">Your Information</a>
+    <!-- <a mat-button id="tabBtn">Payment Method</a> -->
     <a mat-button id="tabBtn" [routerLink]="['./user-ticket']">Your Tickets</a>
     <mat-divider></mat-divider>
     <a mat-button (click)="logout()" id="tabBtn">Logout</a>
   </mat-card>
   
   <mat-card id="userContentDiv">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   </mat-card>
 </mat-card>

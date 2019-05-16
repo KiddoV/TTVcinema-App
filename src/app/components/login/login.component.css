@@ -24,3 +24,7 @@
     margin: 50px auto;
     width: 400px;
 }
+
+a {
+    text-decoration: none;
+}

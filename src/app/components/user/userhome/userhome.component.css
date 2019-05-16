@@ -32,15 +32,25 @@ a {
     width: 100%;
 }
 
+td {
+    padding: 5px 30px;
+    font-size: 20px;
+}
+
 /* ==================================================== */
 /* Ticket Shape! */
 .ticket {
+    display: flex;
     color: white;
     background: #4a4a4a;
-    padding: 35px 30px;
+    padding: 25px 30px;
     margin:20px;
     border:4px dotted #fff;
+    overflow: auto;
+    border-radius: 0 30px 30px 0;
 }
+
+
 
   
   

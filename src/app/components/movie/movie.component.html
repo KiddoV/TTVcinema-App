@@ -1,5 +1,5 @@
 <mat-card id="movieDetailContainer">
-    <h1 id="movieTitle">{{movie.original_title}}
+    <h1 id="movieTitle">{{movie?.original_title}}
         <span *ngIf="movieInTheater" class="badge badge-pill badge-primary">In Theater</span>
         <span *ngIf="!movieInTheater" class="badge badge-pill badge-secondary">Not In Theater</span>
     </h1>
@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td>Genre:</td>
-                <td><span *ngFor="let genre of movie.genres" class="badge badge-warning mr-2">{{genre.name}}</span></td>
+                <td><span *ngFor="let genre of movie.genres" class="badge badge-warning mr-2">{{genre?.name}}</span></td>
             </tr>
             <tr>
                 <td>Overview:</td>
@@ -46,47 +46,47 @@
 
 <mat-card id="movieDetailContainer" *ngIf="showDiv">
     <h3>Your Order</h3>
-
     <mat-card id="orderCard">
-        <div style="text-align: center; padding: 5px;">
-            <h6>{{movie.original_title}}</h6>
-            <h6>Runtime: {{movie.runtime}} mins</h6>
-        </div>
-        <mat-divider></mat-divider>
-        <h6>Show Time: </h6>
-        <mat-select [(value)]="showTime" placeholder="Showtime available...">
-            <mat-option *ngFor="let movieTime of movieTimes" [value]="movieTime.value">
-                {{movieTime.viewValue}}
-            </mat-option>
-        </mat-select>
-        <mat-divider></mat-divider>
-        <h6>Ticket Type:</h6>
-        <mat-radio-group [(ngModel)]="ticketType">
-            <mat-radio-button value="Adult">Adult ($14.00)</mat-radio-button>
-            <mat-radio-button value="Child">Children ($10.00)</mat-radio-button>
-        </mat-radio-group>
-        <mat-divider></mat-divider>
-        <h6>Payment:</h6>
-        <mat-form-field>
-            <input matInput placeholder="Card Holder Name" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input matInput placeholder="Billing Address" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input [(ngModel)]="cardNumber" type="number" matInput placeholder="Card Number (16 digits)" maxlength="16"
-                minlength="16" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input type="number" matInput placeholder="CVV (3 digits)" maxlength="3" minlength="3" required>
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <div style="text-align: center;">
-            <button id="submitBtn" mat-button (click)="buyTicket()">Submit</button>
-        </div>
+        <form (ngSubmit)="onSubmit(orderForm)" #orderForm="ngForm">
+            <div style="text-align: center; padding: 5px;">
+                <h6>{{movie.original_title}}</h6>
+                <h6>Runtime: {{movie.runtime}} mins</h6>
+            </div>
+            <mat-divider></mat-divider>
+            <h6>Show Time: </h6>
+            <mat-select [(value)]="showTime" placeholder="Showtime available...">
+                <mat-option *ngFor="let movieTime of movieTimes" [value]="movieTime.value">
+                    {{movieTime.viewValue}}
+                </mat-option>
+            </mat-select>
+            <mat-divider></mat-divider>
+            <h6>Ticket Type:</h6>
+            <mat-radio-group ngModel name="ticketType" required>
+                <mat-radio-button value="Adult">Adult ($14.00)</mat-radio-button>
+                <mat-radio-button value="Child">Children ($10.00)</mat-radio-button>
+            </mat-radio-group>
+            <mat-divider></mat-divider>
+            <h6>Payment:</h6>
+            <mat-form-field>
+                <input ngModel name="cardHolderName" matInput placeholder="Card Holder Name" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input ngModel name="billAddr" matInput placeholder="Billing Address" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input ngModel name="cardNumber" type="text" pattern="\d*" maxlength="16" minlength="16" matInput placeholder="Card Number (16 digits)" required>
+                <mat-error>Please type 16 digits number!</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input ngModel name="cvvNum" type="text" pattern="\d*" maxlength="3" minlength="3" matInput placeholder="CVV (3 digits)" required>
+                <mat-error>Please type 3 digits number!</mat-error>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <div style="text-align: center;">
+                <button [disabled]="orderForm.invalid" id="submitBtn" mat-button>Submit</button>
+            </div>
+        </form>
     </mat-card>
-
-</mat-card>

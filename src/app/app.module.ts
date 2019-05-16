@@ -20,7 +20,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieComponent } from './components/movie/movie.component';
-import { UserhomeComponent, UserTicketComponent } from './components/user/userhome/userhome.component'
+import { UserhomeComponent, UserTicketComponent, UserInfoComponent } from './components/user/userhome/userhome.component'
 
 //Services
 import { SearchMovieService } from './services/search-movie.service';
@@ -40,7 +40,7 @@ import { AdminhomeComponent, MoreMovieInfoDialog } from './components/admin/admi
     SignupComponent,
     SearchMovieComponent,
     MovieComponent,
-    UserhomeComponent, UserTicketComponent,
+    UserhomeComponent, UserTicketComponent, UserInfoComponent,
     FooterbarComponent,
     AdminhomeComponent, MoreMovieInfoDialog, //These two in the same component file | dialogbox need to add here
 

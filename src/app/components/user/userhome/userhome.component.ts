@@ -31,7 +31,14 @@ export class UserhomeComponent implements OnInit {
   styleUrls: ['./userhome.component.css']
 })
 export class UserInfoComponent implements OnInit {
-  ngOnInit(){}
+  userInfo: any;
+  constructor(private fetchDB: FetchDatabaseService) {}
+  ngOnInit(){
+    var info = JSON.parse(sessionStorage.getItem('userInfo'));
+    this.userInfo = info;
+
+    console.log(this.userInfo);
+  }
 
 }
 

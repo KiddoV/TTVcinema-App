@@ -6,13 +6,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SearchMovieComponent } from './components/search-movie/search-movie.component';
 import { MovieComponent } from './components/movie/movie.component';
-import { UserhomeComponent, UserTicketComponent } from './components/user/userhome/userhome.component';
+import { UserhomeComponent, UserTicketComponent, UserInfoComponent } from './components/user/userhome/userhome.component';
 import { LoginService } from './services/login.service';
 import { AdminhomeComponent } from './components/admin/adminhome/adminhome.component';
 
 const routes: Routes = [
   {path: 'user-home', component: UserhomeComponent, canActivate: [LoginService], children: [
     {path: 'user-ticket', component: UserTicketComponent},
+    {path: 'user-info', component: UserInfoComponent},
   ]},
   {path: 'admin-home', component: AdminhomeComponent, canActivate: [LoginService]},
   {path: 'welcome', component: WelcomeComponent},

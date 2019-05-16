@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, ParamMap, RouterLink} from '@angular/router';
 
 import { SearchMovieService } from 'src/app/services/search-movie.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { FetchDatabaseService } from 'src/app/services/fetch-database.service';
 import { LoginService } from 'src/app/services/login.service';
 import { AlertMessageService } from 'src/app/services/alert-message.service';
@@ -51,9 +51,8 @@ export class MovieComponent implements OnInit {
       this.movieId = params['movieID'];
       this.searchMovieService.getMovieById(id).subscribe(data => {
         this.movie = data;
-        console.log(this.movieId);
+        //console.log(this.movieId);
         //console.log(this.movie.poster_path)
-        //console.log(this.movie);
       });
     });
 
@@ -79,13 +78,13 @@ export class MovieComponent implements OnInit {
     }
   }
 
-  buyTicket() {
+  onSubmit(orderForm: NgForm) {
+    //console.log(orderForm.value.ticketType);
     var info = JSON.parse(sessionStorage.getItem('userInfo'));
     var userId = info["id"];
-    console.log(this.showTime);
-    console.log(userId);
-
-    let data = {
+    //console.log(this.showTime);
+    //console.log(userId);
+      let data = {
       id: 0,
       account: {
         id: userId
@@ -94,13 +93,13 @@ export class MovieComponent implements OnInit {
         movieApiId: this.movieId
       },
       movieShowTime: this.showTime,
-      paymentCardNumber: this.cardNumber,
+      paymentCardNumber: orderForm.value.cardNumber,
       ticketType: {
-        type: this.ticketType
+        type: orderForm.value.ticketType
       }
     }
-    //console.log(data);
-    this.fetchDB.addTicket(data).subscribe(resMsg => {
+
+      this.fetchDB.addTicket(data).subscribe(resMsg => {
       console.log(resMsg);
       if (resMsg['success'] == true) {
         this.alertMsg.openSnackBarSuccess('Buy TICKET successfuly!', 'See you in TTV(Cinema)');
@@ -110,4 +109,37 @@ export class MovieComponent implements OnInit {
       }
     });
   }
+
+
+  // buyTicket() {
+  //   var info = JSON.parse(sessionStorage.getItem('userInfo'));
+  //   var userId = info["id"];
+  //   console.log(this.showTime);
+  //   console.log(userId);
+
+  //   let data = {
+  //     id: 0,
+  //     account: {
+  //       id: userId
+  //     },
+  //     movie: {
+  //       movieApiId: this.movieId
+  //     },
+  //     movieShowTime: this.showTime,
+  //     paymentCardNumber: this.cardNumber,
+  //     ticketType: {
+  //       type: this.ticketType
+  //     }
+  //   }
+  //   //console.log(data);
+  //   this.fetchDB.addTicket(data).subscribe(resMsg => {
+  //     console.log(resMsg);
+  //     if (resMsg['success'] == true) {
+  //       this.alertMsg.openSnackBarSuccess('Buy TICKET successfuly!', 'See you in TTV(Cinema)');
+  //       this.routerLink.navigate(['/welcome']);
+  //     } else {
+  //       this.alertMsg.openSnackBarError('Something went wrong!', 'Please try again!');
+  //     }
+  //   });
+  // }
 }

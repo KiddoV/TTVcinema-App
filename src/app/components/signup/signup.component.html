@@ -4,21 +4,26 @@
       <h3 mat-dialog-title>Register New Account</h3>
       <mat-form-field>
         <input ngModel name="firstname" matInput placeholder="Your First Name" required>
+        <mat-error>This field cannot left blank</mat-error>
       </mat-form-field>
       <mat-form-field>
         <input ngModel name="lastname" matInput placeholder="Your Last Name" required>
+        <mat-error>This field cannot left blank</mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input ngModel name="email" matInput placeholder="Your Email Adress" required>
+        <input ngModel name="email" matInput type="email" placeholder="Your Email Adress" required>
         <mat-error>Please enter a valid input!</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>User Name</mat-label>
-        <input ngModel name="username" matInput placeholder="New User Name" required>
+        <input ngModel name="username" matInput maxlength="10" placeholder="New User Name" required>
+        <mat-error>This field cannot left blank</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input ngModel name="password" matInput placeholder="New Password" required>
+        <input ngModel name="password" matInput placeholder="New Password" [type]="show ? 'text' : 'password'" required>
+        <mat-icon id="hSIcon" matSuffix (click)="show = !show">{{show ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error>This field cannot left blank</mat-error>
       </mat-form-field>
       <button [disabled]="signupForm.invalid" id="signupBttn" mat-raised-button style="outline: none;">Submit</button>
     </form>
