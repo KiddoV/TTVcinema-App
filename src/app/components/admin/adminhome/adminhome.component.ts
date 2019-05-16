@@ -101,11 +101,11 @@ export class AdminhomeComponent implements OnInit {
       data=>{
         this.getAllCurrentMovies();
         this.totalMovieInDb--;
-        this.alertMsgService.openSnackBarSuccess('Deleted Successfully', "hide");
+        this.alertMsgService.openSnackBarSuccess('Deleted successfully', "Bye movie!");
       },
       error =>{
         console.log(error);
-        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "try again");
+        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "Try again!");
       });
   }
   //TODO
@@ -115,11 +115,11 @@ export class AdminhomeComponent implements OnInit {
       data=>{
         this.getAllUsers();
         this.totalUser--;
-        this.alertMsgService.openSnackBarSuccess('Deleted Successfully', "hide");
+        this.alertMsgService.openSnackBarSuccess('Deleted successfully', "Bye user!");
       },
       error =>{
         console.log(error);
-        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "try again");
+        this.alertMsgService.openSnackBarSuccess('Delete unuccessfully', "Try again!");
       });
   }
 }
