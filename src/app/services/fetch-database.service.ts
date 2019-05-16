@@ -15,6 +15,10 @@ export class FetchDatabaseService {
     return this.http.get(this.mainUri + "/account/all");
   }
 
+  deleteAccountById(id: number){
+    return this.http.delete(this.mainUri + '/account/delete/' + id);
+  }
+
   getAllMoviesInDB() {
     return this.http.get(this.mainUri + "/movie/all");
   }
@@ -34,5 +38,9 @@ export class FetchDatabaseService {
 
   isMovieInTheater(mId: any) {
     return this.http.get(this.mainUri + '/movie/' + mId);
+  }
+
+  deleteMovieByApiId(id: number){
+    return this.http.delete(this.mainUri + '/movie/delete/' + id );
   }
 }
