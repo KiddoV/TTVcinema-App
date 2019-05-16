@@ -8,7 +8,7 @@ import { User } from './user';
 })
 export class SignupService {
 
-  mainUri: string = "http://13.58.182.105:8085/cinema/account"
+  mainUri: string = "http://18.224.184.202:8085/cinema/account"
 
   constructor(private http: HttpClient) { }
 

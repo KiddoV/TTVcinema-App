@@ -9,7 +9,7 @@ import { AlertMessageService } from './alert-message.service';
   providedIn: 'root'
 })
 export class LoginService {
-  private mainUri: string = "http://13.58.182.105:8085/cinema/account/login";
+  private mainUri: string = "http://18.224.184.202:8085/cinema/account/login";
 
   constructor(private http: HttpClient, private router: Router, private alertMsgSer: AlertMessageService) { }
 

@@ -7,7 +7,7 @@ import { CloseScrollStrategy } from '@angular/cdk/overlay';
 })
 export class FetchDatabaseService {
   
-  private mainUri = 'http://13.58.182.105:8085/cinema';
+  private mainUri = 'http://18.224.184.202:8085/cinema';
 
   constructor(private http: HttpClient) { }
   
